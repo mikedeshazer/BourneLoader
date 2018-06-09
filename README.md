@@ -1,19 +1,38 @@
 # BourneLoader
 Cool Interface Loader like something off of Bourne Identity's Spy UIs
 
-Draft:
+Example is in demo/index.html
 
-loader = new BourneLoader();
+Library is in dist folder in the JS and CSS folders
 
-//messages and speed
+## Step 1
 
-loader.preloadMsgs(["loading this", "loading that", "something else"], 2);
-
-loader.postLoadMsgs({"top":["Title of that user is looking at", "Simple instuction"], "bottom":["Some info about what user is looking at", "Some other info that comes after that", "the final message that sticks"], "speed":2});
+### In HTML, import JS and CSS libs:
 
 
-// all fonts are in the CSS
+```html
 
-These are just notes and will disappear in a few hours when I implement, but for now going to movies with wife and then will finish this tonight.
+	<!-- Bourne Loader CSS -->
+	<link rel="stylesheet" href="../dist/css/bourneloader.css">
+	<!-- Bourne Loader JS -->
+	<script src='../dist/js/bourneloader.js'></script>
+
+```
+
+## Step 2
+
+### In Javascript, after importing the above:
+
+```javascript
+
+	var loader = new BourneLoader();
+	loader.preloadMsgs(["loading this", "loading that", "something else"], 2);
+	loader.postLoadMsgs({"top":["Title of that user is looking at", "Simple instuction"], "bottom":["Some info about what user is looking at", "Some other info that comes after that", "the final message that sticks"], "speed":2});
+
+```
+
+That's it. The .type jQuery method was created in this lib and might be its own lib soon.
+
+
 
 

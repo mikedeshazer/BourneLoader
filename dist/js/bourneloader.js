@@ -4,6 +4,7 @@ var BourneLoader = function(){
 	
 
 	this.thePreloadMsgs=[];
+	this.thePostMsgs  = {};
 
 	function init(){
 		_this.showInitLoader();
@@ -13,9 +14,14 @@ var BourneLoader = function(){
 
 		
 		var loaderHTML = '<div class="spinContainer111"><div class="loadText111"></div><div class="spinner111"></div></div>';
+		var upperPostHTML = '<div class="upperLeft111"><div class="upperText111">SomeInfo</div></div>';
+		var bottomPostHTML = '<div class="bottomRight111"><div class="bottomText111"></div></div>';
+
 
 	
 		$('html').append(loaderHTML);
+		$('html').append(upperPostHTML);
+		$('html').append(bottomPostHTML)
 		var o = $(window);
 		$(".mask-loading").css("height", o.height());
 		$(".spinner111").css("top", (o.height() / 2) - 25);
@@ -23,7 +29,12 @@ var BourneLoader = function(){
 		setTimeout(function(){
 			if(_this.thePreloadMsgs !=[]){
 				$('.spinner111').hide();
-				$('.loadText111').type(_this.thePreloadMsgs, 1)
+				$('.loadText111').type(_this.thePreloadMsgs, 1).on('finished', function(){
+					_this.hideInitLoader();
+					_this.runPostMsgs();
+				})
+				
+
 			}
 			else{
 				_this.hideInitLoader();
@@ -33,7 +44,26 @@ var BourneLoader = function(){
 	}
 
 
+	this.postLoadMsgs = function(msgs){
+		this.thePostMsgs = msgs;
+	}
 
+	this.runPostMsgs = function(){
+
+		if(typeof this.thePostMsgs != "object"){
+			this.thePostMsgs = {};
+		}
+		if(this.thePostMsgs =={}){
+			return false;
+		}
+		console.log(this.thePostMsgs);
+		$('.upperLeft111').fadeIn();
+		$('.bottomRight111').fadeIn();
+
+		$('.upperText111').type(this.thePostMsgs['top']);
+		$('.bottomText111').type(this.thePostMsgs['bottom']);
+
+	}
 
 
 	this.hideInitLoader = function (){
@@ -68,7 +98,7 @@ var BourneLoader = function(){
 
 $.fn.type = function(words, speed, delayMultiple){
 	if(typeof speed != "number"){
-		speed = 1;
+		speed = 1.5;
 	}
 	if(speed > 500){
 		speed = speed/1000;
@@ -83,7 +113,7 @@ $.fn.type = function(words, speed, delayMultiple){
 		//user is probably using milliseconds.... lets fix that for them
 		delayMultiple= delayMultiple/1000;
 	}
-	
+
 	if(typeof words == "undefined"){
 		words = "Example words. You did not set them...";
 	}
@@ -92,7 +122,7 @@ $.fn.type = function(words, speed, delayMultiple){
 
 		$(this).html('');
 		var thisElement = $(this);
-		whichInt = 0;
+		var whichInt = 0;
 		var thisSpeed = 0;
 		for(i=0; i<words.length; i++ ){
 			
@@ -107,11 +137,12 @@ $.fn.type = function(words, speed, delayMultiple){
 		}
 	}
 	else{
-		console.log(words);
+		
 		var currentSpeed = 0;
 		var whichElem = 0;
 		var words1 = words;
 		var thisElement = $(this);
+		
 		for(j=0; j<words.length; j++){
 
 		setTimeout(function(){
@@ -119,7 +150,7 @@ $.fn.type = function(words, speed, delayMultiple){
 
 			thisElement.html('');
 			
-			whichInt = 0;
+			var whichInt = 0;
 			var thisSpeed = 0;
 
 			for(i=0; i<theWords.length; i++ ){
@@ -135,13 +166,21 @@ $.fn.type = function(words, speed, delayMultiple){
 			}
 			
 				whichElem= whichElem+1;
+
+				if(whichElem >= words.length){
+					setTimeout(function(){
+						thisElement.trigger('finished');
+					},speed*delayMultiple);
+				}
 		}, currentSpeed);
 		currentSpeed  = currentSpeed+(speed*delayMultiple);
+
 		}
 
 
 	}
 
+return this;
 
 
 }

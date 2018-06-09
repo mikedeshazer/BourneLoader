@@ -80,6 +80,48 @@ font-family: 'Roboto Mono', monospace;
  color:white;
 }
 
+.upperLeft111{
+  font-family: 'Roboto Mono', monospace;
+  position:fixed;
+  top:0px;
+  height:auto;
+  padding:10px;
+  color:white;
+  font-size:20px;
+  left:0px;
+  width:100%;
+  opacity:.95;
+  background-color:#333;
+  display:none;
+  z-index:400;
+  text-align:left;
+  padding:10px;
+}
+
+.bottomRight111{
+  font-family: 'Roboto Mono', monospace;
+  padding:10px;
+
+  position:fixed;
+  bottom:0px;
+  height:auto;
+  padding:10px;
+  color:white;
+  font-size:20px;
+  left:0px;
+  width:100%;
+  opacity:.95;
+  background-color:#333;
+  display:none;
+  z-index:400;
+  text-align:right;
+}
+
+.bottomText111{
+  padding-right:40px;
+}
+
+
 
 
 /* The typing effect */
