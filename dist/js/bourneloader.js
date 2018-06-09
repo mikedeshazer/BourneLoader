@@ -26,6 +26,7 @@ var BourneLoader = function(){
 		$(".mask-loading").css("height", o.height());
 		$(".spinner111").css("top", (o.height() / 2) - 25);
 
+		$(document).ready(function(){
 		setTimeout(function(){
 			if(_this.thePreloadMsgs !=[]){
 				$('.spinner111').hide();
@@ -40,7 +41,8 @@ var BourneLoader = function(){
 				_this.hideInitLoader();
 			}
 			
-		}, 1500)
+		}, 4500)
+		})
 	}
 
 
@@ -142,7 +144,7 @@ $.fn.type = function(words, speed, delayMultiple){
 		var whichElem = 0;
 		var words1 = words;
 		var thisElement = $(this);
-		
+
 		for(j=0; j<words.length; j++){
 
 		setTimeout(function(){
