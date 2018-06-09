@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 .spinContainer111 {
  background-color: #333;
  width:100%;
@@ -67,6 +70,18 @@
     blink-caret .75s step-end infinite;
 }
 
+.loadText111 {
+font-family: 'Roboto Mono', monospace;
+  font-size:20px;
+ position: absolute;
+ margin-top:20%;
+ text-align:center;
+ width:100%;
+ color:white;
+}
+
+
+
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
@@ -78,4 +93,5 @@
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
+
 
