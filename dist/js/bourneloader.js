@@ -1,3 +1,6 @@
+//open source loader
+// github.com/mikedeshazer/BourneLoader
+
 var BourneLoader = function(){
 
 	//initialize initial loader
