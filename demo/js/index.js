@@ -365,9 +365,27 @@ function triggerCountryOverlays(country){
    latestCountry = country;
   console.log("adding overlay" + country);
   removeBoxes();
-  renderBox("Crypto Finance in "+ country, "Singularity Fund<br><hr><br>Meglelion Fund<br><hr><br>Duggie Fund<br><hr><br>", "upperleft")
-   renderBox(country +" Firm Count", "8<br><br>AUM: >$50M", "lowerright")
+  var listData = getCompanyList(country);
+  renderBox("Crypto Finance in "+ country, listData[0], "upperleft")
+   renderBox(country +" Firm Count", listData[1] , "lowerright")
 }
+
+
+  function getCompanyList(country){
+
+    if(typeof cryptoFinanceData[country] != 'object'){
+      return(["Currently no company information available for this country", "0"]);
+    }
+    else{
+      var firstString = "";
+      var fundList = cryptoFinanceData[country]['fundsList'];
+      for (i in fundList){
+         firstString= firstString+ fundList[i] +"<br><hr><br>";
+      }
+      var numberFunds = cryptoFinanceData[country]['numberFunds'];
+      return [firstString, numberFunds];
+    }
+  }
 
 function removeCountryOverlays(country){
   latestCountry="";
@@ -391,6 +409,20 @@ function renderBox(title, content, position){
 
 }
 
+cryptoFinanceData= {};
+function getCryptoData(){
+  $.ajax({
+    url:'https://map.avocado.proofsuite.com/cloud/api/beta/index.php',
+    complete:function(transport){
+      cryptoFinanceData = $.parseJSON(transport.responseText);
+
+
+    }
+  })
+}
+
+
+getCryptoData();
 
 
 $('.spinContainer111').on('click', function(){
