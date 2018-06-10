@@ -255,8 +255,6 @@ d3.json(
       .on("click", function(d, i) {
           d3.selectAll(".country").classed("country-on", false);
           d3.select(this).classed("country-on", true);
-
-         renderCountryInfo($("#countryLabel" + d.properties.iso_a3 + " text").html())
       //boxZoom(path.bounds(d), path.centroid(d), 20);
       boxZoomnn(path.bounds(d),this,path.centroid(d),20)
 //      boxZoomn(path.bounds(d),this, 20);
@@ -279,10 +277,7 @@ d3.json(
       })
       // add mouseover functionality to the label
       .on("mouseover", function(d, i) {
-          d3.select(this).style("display", "block").on('click', function(){
-          // console.log( $(this).parent())
-             renderCountryInfo($(this).find('text').html())
-        });
+          d3.select(this).style("display", "block");
       })
       .on("mouseout", function(d, i) {
            d3.select(this).style("display", "none");
@@ -328,71 +323,3 @@ d3.json(
   }
 );
       //# sourceURL=pen.js
-
-
-
-
-
-
-
-
-
-//country functions
-
-
-
-
-
-
-//default gloabl
-var latestCountry = "";
-function renderCountryInfo(country){
-
-  
-  if(latestCountry != country){
-   
-    triggerCountryOverlays(country);
-
-   
-  }
-  else{
-
-    removeCountryOverlays(country);
-  }
-}
-
-function triggerCountryOverlays(country){
-   latestCountry = country;
-  console.log("adding overlay" + country);
-  removeBoxes();
-  renderBox("Crypto Finance in "+ country, "Singularity Fund<br><hr><br>Meglelion Fund<br><hr><br>Duggie Fund<br><hr><br>", "upperleft")
-   renderBox(country +" Firm Count", "8<br><br>AUM: >$50M", "lowerright")
-}
-
-function removeCountryOverlays(country){
-  latestCountry="";
-  console.log("removing overlay" + country);
-  removeBoxes();
-}
-
-function removeBoxes(){
-
-  $('.darkboxholder').remove();
-}
-
-function renderBox(title, content, position){
-  //needs darkbox.css
-  if(typeof position !="string"){
-    position = "upperleft";
-  }
-
-  var boxString = '<div class="'+position+' darkboxholder"><div class="card m-b-20 text-xs-center"><div class="card-header">'+title+'</div><div class="card-body"><p class="card-text">'+content+'</p></div><div class="card-footer text-muted"></div></div></div>';
-  $('html').append(boxString);
-
-}
-
-
-
-$('.spinContainer111').on('click', function(){
-  $(this).hide()
-})

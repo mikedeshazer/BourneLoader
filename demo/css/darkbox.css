@@ -1,0 +1,128 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.upperleft{
+  position:fixed;
+  top:50px;
+  left:40px;
+  z-index:600;
+  opacity: .8
+
+}
+
+.upperright{
+  position:fixed;
+  top:40px;
+  right:40px;
+  z-index:600;
+  opacity: .8
+}
+
+.lowerleft{
+  position:fixed;
+  bottom:40px;
+  left:40px;
+  z-index:600;
+  opacity: .8
+}
+
+
+.lowerright{
+
+  position:fixed;
+  bottom:40px;
+  right:40px;
+  z-index:600;
+  opacity: .8
+
+}
+
+
+.darkboxholder .card{
+
+    font-family: "Roboto", sans-serif;
+    background-color: #2f3e47;
+    border-color:  #394c57;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    //background-clip: border-box;
+    border: 2px solid  #394c57;
+    border-radius: .25rem;
+
+    color:#98a6ad;
+    min-width:200px;
+    max-height:180px;
+    overflow-y:scroll;
+    font-size:13px;
+   
+
+
+}
+
+
+.lowerright  .card{
+  max-height:100px;
+}
+ .upperleft ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+ .upperleft ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+
+.darkboxholder .card-header{
+ 
+    //border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    background-color: #394c57;
+    margin-top: 0;
+    border: none !important;
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+
+}
+
+.darkboxholder .m-b-20{
+
+    margin-bottom: 20px !important;
+
+}
+
+.darkboxholder .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    display: block;
+   background-color: #2f3e47;
+    border-color: #394c57;
+}
+
+.darkboxholder  p {
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.darkboxholder .card-footer{
+    //border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+    padding: .20rem 1.25rem;
+    background-color: #394c57;
+    border-top: 1px solid rgba(0,0,0,.125);
+
+}
+
+.darkboxholder .text-muted {
+    color: #98a6ad !important;
+}
+
+
+
+
+
+
