@@ -220,7 +220,11 @@ var svg = d3
 // get map data
 d3.json(
   "https://raw.githubusercontent.com/andybarefoot/andybarefoot-www/master/maps/mapdata/custom50.json", function(json) {
+    
+     $('#map-holder .loadingMsg').html('');
+
     //Bind data and create one path per GeoJSON feature
+
     countriesGroup = svg.append("g").attr("id", "map");
     // add a background rectangle
     countriesGroup
